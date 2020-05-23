@@ -24,12 +24,18 @@ module.exports = appInfo => {
     port: '3306',
     user: 'root',
     password: 'root',
-    database: 'demo',
+    database: 'tbc',
     timezone: '+08:00',
+    define: {
+      freezeTableName: true,
+      underscored: true,
+    },
   };
 
   config.jwt = {
     secret: '123456',
+    enable: true,
+    ignore: [ '/login', '/register' ],
   };
 
   config.security = {
