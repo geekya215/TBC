@@ -5,7 +5,6 @@ module.exports = (options, app) => {
     try {
       await next();
     } catch (err) {
-      console.log(err);
       if (err instanceof app.jwt.UnauthorizedError) {
         ctx.status = 401;
         ctx.body = err;
