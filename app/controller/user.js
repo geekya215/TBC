@@ -19,9 +19,9 @@ class UserController extends Controller {
 
   async register() {
     const { ctx } = this;
-    const { username, password } = ctx.request.body;
+    const { username, password, role } = ctx.request.body;
     try {
-      await ctx.service.user.register({ username, password });
+      await ctx.service.user.register({ username, password, role });
       ctx.status = 201;
     } catch (e) {
       ctx.status = 409;

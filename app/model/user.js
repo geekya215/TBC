@@ -9,6 +9,7 @@ module.exports = app => {
     password: STRING(100),
     address: STRING(100),
     private_key: STRING(150),
+    role: STRING(10),
     created_at: DATE,
     updated_at: DATE,
   });
