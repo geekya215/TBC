@@ -8,9 +8,9 @@ class UserService extends Service {
   async login(user) {
     const { ctx } = this;
     const { username, password } = user;
-    const res = await ctx.model.User.findOne({ attributes: [ 'password' ], where: { username } });
+    const res = await ctx.model.User.findOne({ attributes: [ 'password', 'address' ], where: { username } });
     const cmp = await bcrypt.compare(password, res.password);
-    return cmp;
+    return cmp ? res.address : '';
   }
 
   async register(user) {
