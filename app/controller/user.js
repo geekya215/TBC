@@ -6,10 +6,11 @@ class UserController extends Controller {
   async login() {
     const { app, ctx } = this;
     const { username, password } = ctx.request.body;
-    const res = await ctx.service.user.login({ username, password });
-    if (res) {
+    const address = await ctx.service.user.login({ username, password });
+    if (address) {
       const token = app.jwt.sign({
         username,
+        address,
       }, app.config.jwt.secret);
       ctx.body = { token };
     } else {
@@ -27,6 +28,13 @@ class UserController extends Controller {
       ctx.status = 409;
     }
   }
+
+  async info() {
+    const { ctx } = this;
+    const { username, address } = ctx.state.user;
+    ctx.body = { username, address };
+  }
+
 }
 
 module.exports = UserController;
