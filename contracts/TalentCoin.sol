@@ -30,6 +30,11 @@ contract TalentCoin {
         return true;
     }
 
+    function tax() public returns (bool) {
+        balances[msg.sender] = balances[msg.sender].sub(10);
+        return true;
+    }
+
     function transfer(address to, uint256 value) public returns (bool) {
         require(value <= balances[msg.sender], "");
         require(to != address(0), "");
