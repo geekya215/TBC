@@ -7,11 +7,11 @@ class UserController extends Controller {
   async login() {
     const { app, ctx } = this;
     const { username, password } = ctx.request.body;
-    const address = await ctx.service.user.login({ username, password });
-    if (address) {
+    const res = await ctx.service.user.login({ username, password });
+    if (res) {
       const token = app.jwt.sign({
         username,
-        address,
+        ...res,
       }, app.config.jwt.secret);
       ctx.body = { token };
     } else {
@@ -30,10 +30,10 @@ class UserController extends Controller {
     }
   }
 
-  async info() {
+  async profile() {
     const { ctx } = this;
-    const { username, address } = ctx.state.user;
-    ctx.body = { username, address };
+    const { username, address, role } = ctx.state.user;
+    ctx.body = { username, address, role };
   }
 
 }

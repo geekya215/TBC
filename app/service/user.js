@@ -8,9 +8,9 @@ class UserService extends Service {
   async login(user) {
     const { ctx } = this;
     const { username, password } = user;
-    const res = await ctx.model.User.findOne({ attributes: [ 'password', 'address' ], where: { username } });
-    const cmp = await bcrypt.compare(password, res.password);
-    return cmp ? res.address : '';
+    const { password: hashed, address, role } = await ctx.model.User.findOne({ attributes: [ 'password', 'address', 'role' ], where: { username } });
+    const cmp = await bcrypt.compare(password, hashed);
+    return cmp ? { address, role } : '';
   }
 
   async register(user) {
@@ -18,8 +18,12 @@ class UserService extends Service {
     const { password } = user;
     const salt = await bcrypt.genSalt(10);
     const hashed = await bcrypt.hash(password, salt);
-    const { address, privateKey } = app.web3.eth.accounts.create();
-    const res = ctx.model.User.create({ ...user, password: hashed, address, private_key: privateKey });
+
+    // unlock account for interact with contract
+    const address = await app.web3.eth.personal.newAccount(password);
+    await app.web3.eth.personal.unlockAccount(address, password, 0);
+
+    const res = ctx.model.User.create({ ...user, password: hashed, address });
     return res;
   }
 
