@@ -31,9 +31,10 @@ class UserController extends Controller {
   }
 
   async profile() {
-    const { ctx } = this;
+    const { app, ctx } = this;
     const { username, address, role } = ctx.state.user;
-    ctx.body = { username, address, role };
+    const balance = await app.contract.methods.balance().call({ from: address, gasPrice: 0 });
+    ctx.body = { username, address, role, balance };
   }
 
 }
