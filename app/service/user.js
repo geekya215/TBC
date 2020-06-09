@@ -23,7 +23,7 @@ class UserService extends Service {
     const address = await app.web3.eth.personal.newAccount(password);
     await app.web3.eth.personal.unlockAccount(address, password, 0);
 
-    const res = ctx.model.User.create({ ...user, password: hashed, address });
+    const res = ctx.model.User.create({ ...user, password: hashed, address, updated_at: new Date() });
     return res;
   }
 

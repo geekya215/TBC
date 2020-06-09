@@ -29,6 +29,7 @@ module.exports = appInfo => {
     define: {
       freezeTableName: true,
       underscored: true,
+      timestamps: false,
     },
   };
 
