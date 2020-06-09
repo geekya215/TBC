@@ -34,16 +34,19 @@ class ProfileService extends Service {
       res = ctx.model.Talent.findOne({
         attributes: [ 'sex', 'birthday', 'mobile', 'description' ],
         where: { address },
+        raw: true,
       });
     } else if (role === 'enterprise') {
       res = ctx.model.Enterprise.findOne({
         attributes: [ 'site', 'telephone', 'description' ],
         where: { address },
+        raw: true,
       });
     } else {
       res = ctx.model.University.findOne({
         attributes: [ 'site', 'telephone', 'description' ],
         where: { address },
+        raw: true,
       });
     }
     return res;

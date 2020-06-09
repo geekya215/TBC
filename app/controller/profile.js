@@ -46,7 +46,7 @@ class ProfileController extends Controller {
 
     try {
       const basicProfile = await ctx.service.profile.getBasicProfile(address, role);
-      ctx.body = { ...basicProfile.dataValues };
+      ctx.body = { ...basicProfile };
     } catch (e) {
       ctx.status = 400;
     }
