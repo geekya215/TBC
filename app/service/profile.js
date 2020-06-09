@@ -16,8 +16,8 @@ class ProfileService extends Service {
   async createBasicProfile(data, address, role) {
     const { ctx } = this;
     let res = null;
-    if (role === 'student') {
-      res = ctx.model.Student.create({ ...data, address, updated_at: new Date() });
+    if (role === 'talent') {
+      res = ctx.model.Talent.create({ ...data, address, updated_at: new Date() });
     } else if (role === 'enterprise') {
       res = ctx.model.Enterprise.create({ ...data, address, updated_at: new Date() });
     } else {
@@ -30,8 +30,8 @@ class ProfileService extends Service {
     const { ctx } = this;
     let res = null;
 
-    if (role === 'student') {
-      res = ctx.model.Student.findOne({
+    if (role === 'talent') {
+      res = ctx.model.Talent.findOne({
         attributes: [ 'sex', 'birthday', 'mobile', 'description' ],
         where: { address },
       });
@@ -52,8 +52,8 @@ class ProfileService extends Service {
   async updateBasicProfile(data, address, role) {
     const { ctx } = this;
     let res = null;
-    if (role === 'student') {
-      res = ctx.model.Student.update({
+    if (role === 'talent') {
+      res = ctx.model.Talent.update({
         ...data, updated_at: new Date(),
       }, {
         where: { address },
