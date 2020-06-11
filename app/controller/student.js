@@ -24,7 +24,6 @@ class StudentController extends Controller {
     const { address, role } = ctx.state.user;
     const { student_address } = ctx.request.body;
     try {
-
       if (role === 'university') {
         await ctx.service.student.addStudent({ university_address: address, student_address });
         ctx.status = 201;

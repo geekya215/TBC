@@ -4,11 +4,11 @@ const { Service } = require('egg');
 
 class StudentService extends Service {
 
-  async getStudentList(student_address) {
+  async getStudentList(university_address) {
     const { ctx } = this;
-    const res = await ctx.model.StudentMapping.findAll({
+    const res = await ctx.model.UniversityMapping.findAll({
       attributes: [ 'student_address' ],
-      where: { student_address },
+      where: { university_address },
       raw: true,
     });
     return res;
@@ -16,13 +16,13 @@ class StudentService extends Service {
 
   async addStudent(address) {
     const { ctx } = this;
-    const res = await ctx.model.StudentMapping.create({ ...address });
+    const res = await ctx.model.UniversityMapping.create({ ...address });
     return res;
   }
 
   async deleteStudent(address) {
     const { ctx } = this;
-    const res = await ctx.model.StudentMapping.destroy({ where: { ...address } });
+    const res = await ctx.model.UniversityMapping.destroy({ where: { ...address } });
     return res;
   }
 

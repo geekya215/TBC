@@ -31,7 +31,6 @@ class ProfileController extends Controller {
     const { ctx } = this;
     const { address, role } = ctx.state.user;
     const data = ctx.request.body;
-    console.log(data);
     try {
       await ctx.service.profile.createBasicProfile(data, address, role);
       ctx.status = 201;
