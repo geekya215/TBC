@@ -5,7 +5,7 @@ module.exports = app => {
 
   const Information = app.model.define('information', {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    mard_address: STRING(100),
+    mark_address: STRING(100),
     confirm_address: STRING(100),
     data: JSON,
     created_at: DATE,
