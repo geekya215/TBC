@@ -7,6 +7,10 @@ create table if not exists user
 	password varchar(100) not null,
 	role varchar(10) not null,
 	created_at datetime default CURRENT_TIMESTAMP not null,
-	updated_at datetime not null
+	updated_at datetime not null,
+	constraint user_address_uindex
+		unique (address),
+	constraint user_username_uindex
+		unique (username)
 );
 

@@ -7,6 +7,8 @@ create table if not exists university
 	telephone varchar(30) not null,
 	description varchar(100) not null,
 	created_at datetime default CURRENT_TIMESTAMP not null,
-	updated_at datetime not null
+	updated_at datetime not null,
+	constraint university_address_uindex
+		unique (address)
 );
 

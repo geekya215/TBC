@@ -8,6 +8,8 @@ create table if not exists talent
 	mobile varchar(11) not null,
 	description varchar(100) not null,
 	created_at datetime default CURRENT_TIMESTAMP not null,
-	updated_at datetime not null
+	updated_at datetime not null,
+	constraint talent_address_uindex
+		unique (address)
 );
 
