@@ -1,4 +1,4 @@
-<p align="center"><img src="./doc/TBC-LOGO.png" /></p>
+<p align="center"><img width="150px" src="./doc/TBC-LOGO.png" /></p>
 
 <p align="center"><b>TBC(Talent block chain)</b></p>
 
