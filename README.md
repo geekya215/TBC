@@ -1,6 +1,6 @@
-<center><img src="./doc/TBC-LOGO.png" /></center>
+<p align="center"><img src="./doc/TBC-LOGO.png" /></p>
 
-<center><h1>TBC(Talent block chain)</h1></center>
+<p align="center"><b>TBC(Talent block chain)</b></p>
 
 ## 介绍
 基于以太坊的区块链人才信息平台是以人才为中心，以信息数据分享核心的健康生态系统，打造一个真正服务于互联网基础设施建设的信息平台。将学校，学生，企业三者联系在一起，三者各取所需，都能从中获利。
