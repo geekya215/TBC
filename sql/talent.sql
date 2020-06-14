@@ -2,6 +2,7 @@ create table if not exists talent
 (
 	id int auto_increment
 		primary key,
+	real_name varchar(100) not null,
 	address varchar(100) not null,
 	sex varchar(10) not null,
 	birthday datetime not null,
