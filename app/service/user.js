@@ -19,12 +19,17 @@ class UserService extends Service {
     const salt = await bcrypt.genSalt(10);
     const hashed = await bcrypt.hash(password, salt);
 
-    // unlock account for interact with contract
-    const address = await app.web3.eth.personal.newAccount(password);
-    await app.web3.eth.personal.unlockAccount(address, password, 0);
+    if (password) {
 
-    const res = ctx.model.User.create({ ...user, password: hashed, address, updated_at: new Date() });
-    return res;
+      const address = await app.web3.eth.personal.newAccount(password);
+
+      const res = ctx.model.User.create({ ...user, password: hashed, address, updated_at: new Date() });
+
+      // unlock account for interact with contract
+      await app.web3.eth.personal.unlockAccount(address, password, 0);
+      return res;
+    }
+    throw Error('');
   }
 
 }
